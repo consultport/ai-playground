@@ -1,0 +1,14 @@
+<span class="inline-flex items-center gap-1 bg-[#3f9c43] text-white text-[12px] leading-[18px] rounded-[4px] px-[6px] py-[4px]"
+      data-tag-input-target="pill"
+      data-tag-id="<%= tag.id %>">
+  <button type="button"
+          data-action="click->tag-input#remove"
+          data-tag-id="<%= tag.id %>"
+          class="inline-flex items-center justify-center cursor-pointer hover:opacity-80"
+          aria-label="Remove <%= tag.name %>">
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 3L9 9M9 3L3 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </button>
+  <span><%= tag.name %></span>
+</span>

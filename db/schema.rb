@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_03_19_161623) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_22_130450) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -53,6 +53,22 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_19_161623) do
     t.index ["token"], name: "index_invitations_on_token", unique: true
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "name", null: false
+    t.datetime "updated_at", null: false
+    t.index "LOWER(name)", name: "index_tags_on_lower_name", unique: true
+  end
+
+  create_table "user_tags", force: :cascade do |t|
+    t.integer "tag_id", null: false
+    t.integer "user_id", null: false
+    t.index ["tag_id", "user_id"], name: "index_user_tags_on_tag_id_and_user_id", unique: true
+    t.index ["tag_id"], name: "index_user_tags_on_tag_id"
+    t.index ["user_id", "tag_id"], name: "index_user_tags_on_user_id_and_tag_id", unique: true
+    t.index ["user_id"], name: "index_user_tags_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "confirmation_sent_at"
     t.string "confirmation_token"
@@ -76,4 +92,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_19_161623) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "invitations", "users", column: "invited_by_id"
+  add_foreign_key "user_tags", "tags"
+  add_foreign_key "user_tags", "users"
 end

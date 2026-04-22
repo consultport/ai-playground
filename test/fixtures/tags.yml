@@ -1,0 +1,11 @@
+finance:
+  name: "Finance"
+
+operations:
+  name: "Operations"
+
+strategy:
+  name: "Strategy"
+
+design:
+  name: "Design"

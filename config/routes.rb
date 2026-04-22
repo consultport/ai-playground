@@ -10,7 +10,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resource :dashboard, only: :show, controller: "dashboard"
-    resources :users, only: [:index, :show, :edit, :update, :destroy]
+    resources :users, only: [:index, :show, :edit, :update, :destroy] do
+      resources :tags, only: [:create, :destroy], controller: "users/tags"
+    end
+    resources :tags, only: :index
     resources :invitations, only: [:new, :create, :edit, :update]
     root "dashboard#show"
   end

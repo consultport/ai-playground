@@ -6,6 +6,9 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
+  has_many :user_tags, dependent: :destroy
+  has_many :tags, through: :user_tags
+
   validates :name, presence: true, length: { maximum: 100 }
   validates :nickname, length: { maximum: 50 }, allow_blank: true
   validate :must_have_at_least_one_admin, if: -> { role_changed? && role_was == "admin" }

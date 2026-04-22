@@ -1,0 +1,9 @@
+<%= turbo_stream.replace "user-tags" do %>
+  <%= render "admin/users/tags/frame", user: @user %>
+<% end %>
+
+<% if @error_message.present? %>
+  <%= turbo_stream.append "admin_toast_container" do %>
+    <%= render "admin/users/tags/error_toast", message: @error_message %>
+  <% end %>
+<% end %>

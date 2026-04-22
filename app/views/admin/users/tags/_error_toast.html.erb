@@ -1,0 +1,17 @@
+<div data-controller="toast"
+     class="w-80 bg-white border border-red-200 rounded-lg shadow-lg p-4 flex items-start gap-3 transition-all duration-300 ease-in-out translate-x-full opacity-0">
+  <div class="flex-shrink-0 w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
+    <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M4.93 19h14.14a2 2 0 001.73-3L13.73 4a2 2 0 00-3.46 0L3.2 16a2 2 0 001.73 3z"/>
+    </svg>
+  </div>
+  <div class="flex-1 min-w-0">
+    <p class="text-sm font-medium text-gray-900">Could not add tag</p>
+    <p class="text-sm text-gray-500"><%= message %></p>
+  </div>
+  <button data-action="toast#dismiss" class="flex-shrink-0 text-gray-400 hover:text-gray-600 cursor-pointer" aria-label="Dismiss">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+    </svg>
+  </button>
+</div>
